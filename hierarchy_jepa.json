@@ -1,0 +1,214 @@
+[
+  {
+    "title": "4DGS-JEPA: Temporally Compositional Joint-Embedding Prediction for Dynamic Gaussian Splatting",
+    "abstract": "Dynamic Gaussian Splatting explicitly represents evolving 3D scenes, but is typically optimized for reconstruction, rendering, or future-state generation rather than reusable predictive dynamics. We propose 4DGS-JEPA, a Gaussian-native joint-embedding predictive architecture for causal multi-horizon prediction. It combines hierarchical scene, motion-group, and Gaussian-level representations with a horizon-conditioned transition supporting both direct prediction and recursive rollout. Its central principle is temporal composition: different chronological transition paths reaching the same future endpoint should produce compatible predictive states. Endpoint and multi-horizon path supervision anchor predictions to future target embeddings, while a selective geometry decoder and geometry-level composition ground the learned dynamics in coherent group motion and Gaussian geometry without reconstructing complete future appearance. We further introduce hybrid correspondence that preserves reliable persistent canonical identity and applies residual optimal transport when correspondence becomes ambiguous under reordering or topology change. We theoretically characterize zero-loss path agreement and finite-error rollout accumulation. In controlled dynamic Gaussian worlds, temporal composition reduces direct--composed latent discrepancy by about 61\\% while slightly improving predictive accuracy, geometry-level composition reduces group-motion path discrepancy by about 72\\%, hybrid correspondence remains robust under reordering and topology change, and predicted Gaussian geometry can be rendered into held-out future frames without pixel-level training. These results establish 4DGS-JEPA as a predictive, temporally compositional formulation of dynamic Gaussian worlds.",
+    "keywords": [
+      "4D Gaussian Splatting",
+      "JEPA",
+      "world models",
+      "temporal composition"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=sW3PNIm1ja"
+  },
+  {
+    "title": "Abductive World Modeling via Causal Representation Learning",
+    "abstract": "The central challenge of world modeling is to learn representations that capture how the world evolves. However, existing world models predominantly represent future states without explicitly capturing the latent causes underlying their evolution, limiting their ability to reason about why and how the world changes.\nTo address this limitation, we propose *Abductive World Modeling (AWM)*, a framework that learns structured causal representations by abductively inferring latent causes from predicted futures.\nSpecifically, we realize AWM through the Hierarchical Abductive State Pyramid (HASP), which organizes the inferred world state into three complementary components—*Entity*, *Dynamic*, and *Relation*—capturing what exists, how it changes, and how entities interact, respectively.\nBy jointly reasoning over the current observation and its predicted future, HASP abductively infers these latent factors and integrates them into a structured state representation for downstream reasoning.\nTo the best of our knowledge, AWM is the first framework to introduce abductive state inference into latent-space world modeling for learning structured representations of world dynamics. Experiments across physical prediction, causal reasoning, and action understanding demonstrate the effectiveness of our approach. Compared with V-JEPA 2, a state-of-the-art latent-space world model, AWM improves physical prediction AUROC by 10.7\\%, causal reasoning accuracy by 16.8\\%, and action Top-1 accuracy by 68.0\\%.",
+    "keywords": [
+      "World Models",
+      "Abductive Inference",
+      "Latent Dynamics"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=ksbAwDirSy"
+  },
+  {
+    "title": "Adaptive Latent Capacity for World Models",
+    "abstract": "We introduce Adaptive LeWorldModel (ALeWM), a world model based on a joint-embedding predictive architecture (JEPA) that learns to concentrate predictive information in compact prefixes of a wide latent representation. To encourage this ordering, ALeWM learns a sequence-conditioned distribution over prefix lengths and trains the predictor to estimate the full next embedding from a sampled input prefix. As standard anti-collapse objectives encourage variation across latent coordinates but do not organize them by predictive importance, we also introduce MixSIGReg. MixSIGReg regularizes the masked embeddings against a prior-weighted mixture with Gaussian active prefixes and zeros in the remaining coordinates. As a result, the ALeWM objective encourages early coordinates to retain information useful for prediction and recursive planning. Our analysis shows that the mixture distribution used by MixSIGReg assigns higher variance to earlier coordinate blocks and lower variance to later ones. In addition, we show that, under specified assumptions, prediction error is minimized by placing the information most useful for prediction in earlier blocks. Empirically, we study the behavior of ALeWM in a controlled dynamical system with known state variables and in goal-conditioned visual control. We show that ALeWM consistently achieves higher mean success rates than tuned fixed-width LeWM, with lower planning capacity on average.",
+    "keywords": [
+      "LeWorldModel",
+      "JEPA",
+      "Nested dropout",
+      "Adaptive latent embedding size"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=gwKbYJF6ui"
+  },
+  {
+    "title": "Beyond a Single Latent Space: A Dual-Latent World Model for Long-Horizon Planning",
+    "abstract": "Latent world models often struggle with long-horizon planning, even when their short-term predictions are accurate. Prediction errors accumulate during recursive rollout, while distance concentration in high-dimensional latent spaces can weaken the distinction between states at different distances from a goal. We introduce the Dual-Latent World Model (Dual-WM), which separates local execution from long-range planning through two distinct state representations and dynamics models. The low-level model captures fine-grained action-conditioned transitions, while the high-level model uses learned macro-actions to plan over longer temporal spans. We further propose Long-Horizon Representation Learning with Weighted Rollout (LoRe), which supervises self-generated predictions at both levels. Motivated by an analysis of recursive error propagation, LoRe uses exponential horizon weights with separate decay rates to balance multi-step supervision at each temporal scale. During planning, the high-level model generates latent subgoals, and the low-level model refines them into actions for precise execution. We evaluate from-scratch Dual-WM on five goal-conditioned visual control tasks against the task-wise strongest baselines without actor-guided proposals. At goal offsets of 50 and 100 environment steps, mean success increases from 75.9\\% to 84.4\\% and from 61.4\\% to 69.5\\%, respectively. At offset 100, Dual-WM outperforms these baselines on all five tasks and improves mean success over LeWM by 30.8 percentage points. Ablations and supporting analyses provide evidence that the proposed design learns more informative state representations for goal evaluation and improves consistency under recursive prediction. These results highlight the value of separating temporal roles and training across multiple horizons for reliable latent planning.\nOur core implementation is available in an anonymous repository at \\url{https://anonymous.4open.science/r/Dual-WM-2411/}.",
+    "keywords": [
+      "World Model",
+      "Latent Planning",
+      "JEPA",
+      "Representation Learning"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=owCbHb5DNy"
+  },
+  {
+    "title": "Cross-Scale Latent Predictive Pretraining for Whole-Slide Image",
+    "abstract": "Whole-slide images (WSIs) contain diagnostic information across magnifications, from tissue architecture to cellular morphology. Multi-scale MIL methods often encode patches from different magnifications independently and combine their representations post hoc, so the coarse representation may fail to preserve cues predictive of fine-scale morphology. Using both scales also requires fine patch encoding at inference. Cross-scale self-supervised learning (SSL) introduces interaction during pretraining, but direct representation matching or fine-patch reconstruction does not account for cross-scale asymmetry because fine views contain details unavailable from coarse inputs. We introduce **Patch-JEPA**, a cross-scale latent predictive pretraining framework. A frozen fine-scale target encoder produces an ordered fine-scale latent field from aligned fine patches. Separate prediction branches map coarse representations to this field and an aggregated coarse-scale target, training the coarse-scale context encoder without direct cross-scale matching or fine-patch reconstruction. Fine-scale representations are used only as pretraining targets, and the retained context encoder uses only coarse patches for coarse-only inference. Patch-JEPA is competitive with standard SSL, cross-scale SSL, and post-hoc multi-scale WSI pipelines on four pathology benchmarks. On RCC, ridge probing yields \\(R^2 = 0.450\\) for aligned fine-scale latent-field prediction, compared with \\(0.231\\) for Cross-MAE. Model-side inference cost remains close to a single-scale baseline under a fixed-bag timing protocol.",
+    "keywords": [
+      "Computational Pathology",
+      "Whole-Slide Image Analysis",
+      "Self-Supervised Learning",
+      "Latent Predictive Learning"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=ruXlRUW0iX"
+  },
+  {
+    "title": "Earth-JEPA：Toward efficient and transferable Earth-system latent representation learning",
+    "abstract": "Deep learning for Earth system forecasting has advanced rapidly, mostly through end-to-end supervision on reanalysis data for individual tasks. This training paradigm tends to be less efficient on spatiotemporally smooth fields, while making cross-task adaptation relatively expensive. To overcome these challenges, we introduce Earth-JEPA (E-JEPA), a reconstruction-free, multi-resolution, modality-wise Joint-Embedding Predictive Architecture for efficient and transferable Earth-system prediction. Modality-specific branches encode satellite observations, atmospheric reanalysis and geographic fields into a multi-resolution latent state. A latent-pyramid predictor with Scale-Specific Attention forecasts future representations, each supervised by its corresponding exponential moving average (EMA) target through a State-Transition Loss. On WeatherBench2, Earth-JEPA achieves 17.8% higher 24-hour U850 anomaly correlation coefficient (ACC) than a leading large-scale supervised weather forecaster using only about 12.8% of their estimated training compute. Experiments on SEVIR and our proposed EarthCastBench benchmark demonstrate transferability across time-intervals and sensors, robustness to missing reanalysis, and strong performance on dense tasks, e.g., precipitation nowcasting, and forecasting of surface and atmospheric variables. These results suggest a promising direction for efficient and transferable Earth-system latent representation learning. Code and data will be released upon publication.",
+    "keywords": [
+      "representation learning",
+      "self-supervised learning",
+      "earth system modeling",
+      "foundation models"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=CTH0mXU2lj"
+  },
+  {
+    "title": "H-JEPA: End-to-End Learning of Hierarchical World Models for Visual Planning",
+    "abstract": "Long-horizon planning with latent world models requires reasoning across timescales and levels of abstraction. Existing task-agnostic JEPA world models predict and plan at a single timescale or with multiple horizons in one shared latent space. We introduce H-JEPA, an end-to-end recipe for training a hierarchy of action-conditioned JEPAs in which each level predicts farther ahead in its own learned latent space. Planning proceeds top-down: the top level optimizes progress toward the goal, and each level's predictions become subgoals for the planner below it. When factors in the data evolve at separated timescales, higher levels discard fast, unpredictable detail and retain slower task-relevant state. Across four simulated navigation and manipulation environments, hierarchical planning improves over a flat JEPA; on Visual AntMaze, a three-level hierarchy raises success from 18% to 73% at matched compute. Ablations attribute these gains to both temporal decomposition and higher-level goal representations. With inverse-dynamics supervision, the approach extends to diverse real-robot videos from DROID, where hierarchy improves offline planning fidelity at lower planner compute.",
+    "keywords": [
+      "World Model",
+      "JEPA",
+      "Planning",
+      "SSL",
+      "Hierarchical world models"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=HfeFkcLX32"
+  },
+  {
+    "title": "Laminar: Querying Biology at Any Scale with Tissue Embedding Fields",
+    "abstract": "Biology is organized at nested spatial scales, from molecules to cells to multicellular neighborhoods, whose functions emerge from multi-scale organizations rather than any single cell. Imaging-based spatial transcriptomics (iST) captures all of these scales in a single experiment, measuring up to billions of individual transcripts, each with its gene identity and sub-micrometer position. To handle this volume, existing foundation models pool transcripts into predefined units such as cells, patches, or bins before learning, which fixes the representation to a single spatial scale and discards the molecular geometry within each unit. We introduce *tissue embedding fields*, a representation that assigns contextual embeddings on a shared unit hypersphere to every measured transcript. A region of any size or shape, from a single cell to a whole section, can then be represented by summing and normalizing the embeddings of the transcripts it contains, without re-encoding the tissue. The spatial unit of analysis is therefore chosen at query time rather than fixed during training. To compute such fields at billion-transcript scale, we introduce Laminar, a local-to-global encoder whose cost grows linearly with transcript count. A graph neural network exchanges short-range molecular information over local transcript graphs while a quadtree spatial Transformer propagates information to progressively larger tissue tiles. Each transcript then retrieves this multi-scale context through cross-attention, yielding its final embedding. We train Laminar using a joint-embedding predictive architecture, where a context encoder processes spatially- and gene-masked tissue, while a predictor matches multi-scale regional representations of the complete tissue.\nA single Laminar encoder pretrained on 632 public human iST sections, evaluated frozen on eight transfer tasks spanning cell, niche, and tissue scales, achieves the best scores on tissue-scale tasks while remaining competitive with fixed-scale foundation models at cell scale, with an overall best mean rank. Laminar shows that biological representations need not be tied to predefined spatial units; a unified representation enables reasoning across the hierarchy of tissue organization.",
+    "keywords": [
+      "Foundation Models",
+      "AI for Science",
+      "Spatial Data",
+      "Omics data",
+      "Biology",
+      "Biomedical data",
+      "JEPA",
+      "transfomers",
+      "geometric deep learning",
+      "spatial omics"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=pPaLAz7poc"
+  },
+  {
+    "title": "Latent Goal Prediction from Language for Model-Based Planning",
+    "abstract": "Joint-Embedding Predictive Architectures (JEPAs) enable agents to plan in latent space by imagining the outcomes of candidate actions, yet task specification remains a bottleneck. Visual targets provide precise\nlocal gradients but poor distant guidance, while language is flexible yet limited by noisy cross-modal alignment or dependence on distinct large generative models. We introduce LAGO (Latent Goal Prediction from Language), a hierarchical world model in which a single predictor both forecasts action-conditioned dynamics and grounds language instructions as sequences of intermediate latent subgoals, training both modes with a single regression objective over a shared latent space. At each planning step, LAGO predicts a sequence of latent subgoals from a language instruction and optimizes an action sequence using a soft-minimum alignment cost that rewards subgoal proximity without enforcing a rigid path. Subgoals are repredicted as the agent's state evolves, turning a single long-horizon instruction into a sequence of locally tractable objectives. Across environments spanning navigation and manipulation, LAGO outperforms flat and hierarchical image-goal planners, with the largest gains on long-horizon navigation with curved, hazard-constrained paths, where it more than doubles the success rate of a goal-conditioned behavior cloning policy trained on the same demonstrations. Grounding language in the world model's own latent space also outperforms vision-language reward models, including one that plans with ground-truth dynamics.",
+    "keywords": [
+      "world models",
+      "hierarchical planning",
+      "subgoal prediction",
+      "language-conditioned planning",
+      "joint-embedding predictive architecture"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=3CsEiuXGJe"
+  },
+  {
+    "title": "LeWM++: Repairing the Planning Interface of Latent World Models",
+    "abstract": "Latent world models enable visual control without reconstructing pixels, yet remain unreliable over long horizons. We identify three planning mismatches that worsen with goal offset: target mismatch between a distant goal and a short reliable rollout; search mismatch between sparse effective action sequences and uninformed sampling; and cost mismatch between goal-reaching semantics and restrictive terminal-only cost. Addressing these failures requires a planning interface that effectively translates latent representations into actions. We introduce LeWorldModel++ (LeWM++), a planning-interface framework built on a frozen latent world model. LeWM++ comprises three complementary components guided by a central principle: preserving global intent through the final goal while using a local target to drive short-horizon planning. LatentPathFlow generates a temporally aligned latent path and uses its endpoint as the local target; a final-goal-conditioned Action Chunk Prior guides CEM search with temporally coherent action-chunk proposals; and Min-over-Horizon scores each rollout by its closest approach to the local target. On the LeWM Control Suite, LeWM++ achieves the highest average success at all four evaluated goal offsets; as goal distance increases, its lead over LeWM grows from 12.0 to 32.3 percentage points. Across eight visual OGBench datasets, LeWM++ achieves 50.62% average success, exceeding the model-based planning method Latent Diffusion Planning (LDP) by 34.2 percentage points. On two real-robot tasks, LeWM++ outperforms goal-conditioned Diffusion Policy by 18.9 percentage points, demonstrating its control effectiveness under the hardware protocol. These results show that effective latent planning depends not only on predictive dynamics, but also on aligning the planner's target, proposal, and cost.",
+    "keywords": [
+      "JEPA",
+      "Latent World Models",
+      "Long-Horizon Planning",
+      "Planning Interface",
+      "Hierarchical Planning",
+      "Goal-Conditioned Planning"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=RIpEtbedmF"
+  },
+  {
+    "title": "Metro-WM: Long-Horizon Latent Planning with Realisable Sub-Goals",
+    "abstract": "Model-predictive control with Joint-Embedding Predictive Architectures (JEPAs) provides a strong zero-shot goal-reaching planner, but it is only effective over short planning horizons. Hierarchical extensions attempt to bridge this gap by learning a macro planner to predict intermediate latent sub-goals to guide the micro planner. In this work, we demonstrate that unconstrained latent sub-goal prediction is fundamentally flawed. A rigorous evaluation reveals that a leading state-of-the-art macro planner routinely emits physically unrealisable sub-goals. To resolve this, we introduce Metro-WM, a hierarchical framework that issues sub-goals by retrieving genuine states from prior experience rather than generating ungrounded latent vectors. Specifically, Metro-WM constructs a graph whose vertices are observed frames from offline expert demonstrations or random-action trajectories, allowing frames from different episodes to be connected and stitched into routes to the goal. Planning over the full graph also makes the system highly robust to execution errors: if the micro planner drifts off course, Metro-WM instantly finds a new optimal path from the current state. Our experiments show that Metro-WM achieves superior long-horizon success rates of up to $37.33$ percentage points over the next best hierarchical approach while being up to $10.9\\times$ faster, requiring both $13\\text{--}56\\times$ less offline compute and fewer tuned hyperparameters. Additional analysis reveals that Metro-WM finds shorter paths than the offline demonstrations, outperforms an oracle relying on the query's own demonstration, and maintains robust performance under extremely sparse dataset conditions.",
+    "keywords": [
+      "world models",
+      "hierarchical planning",
+      "model-predictive control",
+      "joint-embedding predictive architectures"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=ydh3XsRypN"
+  },
+  {
+    "title": "Multi-Scale Future Modeling for Latent World Models",
+    "abstract": "Latent world models efficiently predict future world states in representation space, but most existing approaches model the future only at the timestep level, as a dense sequence of latent states. While this preserves fine-grained dynamics, it provides no explicit representation of future evolution over longer temporal intervals, potentially biasing forecasting toward local dynamics. We present MS-JEPA, a multi-scale latent forecasting framework that models future evolution at complementary temporal scales. The key idea is to represent the same future through both dense latent states and Future Abstractions: the former preserve fine-grained dynamics, while the latter summarize evolution over temporal intervals. A high-level predictor anticipates these abstractions from observed latents to guide dense forecasting. By explicitly modeling temporal structure across scales, our framework combines broader future context with fine-grained dynamics. Experiments across egocentric hand motion, whole-body motion, and physical-scene forecasting show consistent improvements over latent world modeling baselines, demonstrating the effectiveness and generality of our approach.",
+    "keywords": [
+      "World Model",
+      "Latent World Model",
+      "JEPA"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=yUpCWMAUcD"
+  },
+  {
+    "title": "Nested Latent Representations for Size-Flexible End-to-End World Models",
+    "abstract": "Latent world models for planning typically assume a fixed representation size. While recent work, such as SubJEPA, considered operating in subspaces of smaller dimensionality, they require additional task-specific tuning of the subspace granularity. In this work, we ask whether world models can learn representations that remains useful across multiple post-hoc embedding sizes. As an answer, we introduce ElasticJEPA which jointly trains a world model at multiple nested granularities. ElasticJEPA combines subspace regularization with prediction losses applied to the same prefixes used at inference. The novel prediction loss objective induces a coordinate-supervision profile that is naturally monotonically-ordered. ElasticJEPA also ensures that privileging prefixes are retained under truncation. With such a construction, a single trained model can be evaluated at multiple representation sizes with no need for retraining. Importantly, inference-time evaluation can also include widths not supervised during training. Across four environments, ElasticJEPA is competitive with prior methods at full width, retains most of its performance under substantial truncation, and degrades less than baselines truncated to the same size, most clearly at the smallest widths.",
+    "keywords": [
+      "nested representations",
+      "jepa",
+      "world models"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=Sz1bw9EY03"
+  },
+  {
+    "title": "NestedWM: World Models with Nested Latent Representations",
+    "abstract": "Planning with world models requires repeated rollouts, yet conventional models are trained with a fixed latent size that determines the trade-off between representation capacity and planning cost.\nWe propose NestedWM, which learns nested latent representations that allow a single world model to predict and plan using leading prefixes of its predictive state at different budgets.\nEach prefix contains either the leading dimensions of a latent vector or the leading tokens of an ordered latent-token sequence.\nWe jointly train an encoder and an action-conditioned predictor over sampled prefix budgets, using each selected prefix as both the predictor input and the target prediction space.\nIn a dimension-wise study with the architecture held fixed, a single encoder and predictor support planning across budgets, achieving high success with only a fraction of the full latent dimensions in most evaluated visual-control and synthetic tasks.\nFurther analyses show that leading prefixes preferentially retain planning-relevant information, while predictable distractors can consume limited representation budget.\nWe then turn this capability into computational savings with a token-wise instantiation that processes only the selected prefix tokens during rollout.\nIn controlled multi-token settings, a single model supports successful planning across multiple token budgets, with smaller prefixes reducing model-based cost-evaluation time.",
+    "keywords": [
+      "World Model",
+      "Latent World Model",
+      "LeWorldModel",
+      "JEPA",
+      "Nested Representation",
+      "Matryoshka Representation"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=tw9rh4fyrA"
+  },
+  {
+    "title": "SpectralEarth-FM: Bringing Hyperspectral Imagery into Multimodal Earth Observation Pretraining",
+    "abstract": "Earth observation (EO) foundation models (FMs) are increasingly trained on multisensor data, spanning multispectral imagery (MSI), synthetic aperture radar (SAR), and derived geospatial layers, but hyperspectral imagery (HSI) remains underrepresented. Conversely, most existing hyperspectral FMs are trained on HSI alone, leaving joint pretraining and fusion of HSI with co-located EO sensors underexplored. We introduce SpectralEarth-FM, a hierarchical transformer for multisensor EO input with heterogeneous spectral dimensionality. The architecture combines spectral tokenization for HSI, sensor-specific encoders, a cross-sensor fusion module, and a shared encoder. To pretrain SpectralEarth-FM, we curate SpectralEarth-MM, a multimodal dataset that co-locates HSI from three spaceborne sensors (EnMAP, EMIT, DESIS) with Sentinel-2, Landsat-8/9 optical imagery, Landsat land surface temperature, and Sentinel-1 SAR. It comprises approximately 2M globally distributed locations, 25M georeferenced patches, and over 40TB of data. Pretraining uses a Joint-Embedding Predictive Architecture (JEPA)-style objective that matches representations between global views and single-sensor local views from the same location. We evaluate SpectralEarth-FM on hyperspectral downstream tasks and standard EO benchmarks following the PANGAEA protocol, achieving results that are competitive with state-of-the-art models.",
+    "keywords": [
+      "Earth observation",
+      "foundation models",
+      "hyperspectral imagery",
+      "multimodal learning",
+      "self-supervised learning",
+      "representation learning"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=vvRwX9PlGE"
+  },
+  {
+    "title": "Timescale Identification from $k$-Step Transition Operators: The Structural Entropy Spectrum",
+    "abstract": "Agents and world models discretise experience into a transition graph at one fixed step, yet behaviour has structure at several timescales. Which step should the graph be built at, and which timescales are present? Multiscale tools (Markov stability, the map equation at Markov time, implied timescales of Markov state models) sweep a time parameter but attach no significance statement to the scales they report. We make the step count k an argument of a clustering objective on the k-step operator P^k and calibrate it against a matched null: chains whose stationary flow matrix has identical margins and dwell (self-loop) mass. Our theory uses structural entropy (SE), a two-level code-length objective: the structural entropy spectrum SE(k), its null SE_null(k) and the calibrated spectrum ΔSE(k) = SE_null(k) − SE(k). We prove that the k-dependence factors through an exact identity, SI(k;C) = Σ_a F_aa(k) log2(1/V_a) (k-step module persistence × module code length), prove that when metastable blocks have stationary volume < 1/2 the metastable partition is the unique global optimizer of the idealized in-window operator, and sketch a Simon–Ando extension to nearly uncoupled chains on a window whose endpoints scale as 1/(1−λ) for the fast and slow eigenvalue clusters, so the optimal partition path coarsens through a planted hierarchy in order. On a 36-state three-level chain, the path recovers both planted levels in order at calibrated effect sizes up to 1.8 bits, although at this fixture's modest scale separation ΔSE(k) shows no plateaus; a single-scale expander control is featureless; the spectrum is estimable from a single trajectory. On latent transition graphs from a pixel-based JEPA world model, the one-step graph's calibrated effect falls below the preregistered 0.1-bit floor, while the spectrum peaks reproducibly at k* = 11–16 with 1.6–1.9 bits across five training seeds; a self-loop control shows that this structure survives removal of dwell but that the peak location is a dwell-inflated step count (two state changes). The calibration is not SE-specific: wrapped around the map equation it passes the planted-hierarchy, single-scale and structureless controls, and around Markov stability all but the expander control; both recover two balanced blocks, SE's boundary case, and the scale boundaries move with the objective. All decisive experiments were preregistered with pass/fail gates and are reported verbatim.",
+    "keywords": [
+      "structural entropy",
+      "Markov chains",
+      "timescale identification",
+      "metastability",
+      "spectral methods",
+      "world models"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=nVZXNXJGIv"
+  },
+  {
+    "title": "UMM-JEPA: Generative Pretraining via Masked Next-Scale Representation Prediction for Unified Multimodal Models",
+    "abstract": "Unified multimodal models can support both visual understanding and generation, yet generative training does not necessarily improve understanding. We argue that this limitation may arise from a mismatch between the representation targeted by generation and the perceptual representation used for understanding. Conventional generation objectives primarily optimize synthesis-oriented spaces such as discrete visual codes or generative latents. We therefore introduce UMM-JEPA, which reformulates generation as progressive prediction of continuous visual-understanding representations. The model constructs a $64\\rightarrow128\\rightarrow256\\rightarrow512$ representation hierarchy from coarse to fine, while pixel rendering is decoupled from representation pretraining and attached only afterward. Controlled comparisons show that the representation-prediction objective accounts for most of the understanding improvement, while a data-matched control leaves the group means nearly unchanged. The final UMM-JEPA reaches a 16-benchmark visual mean of 51.71, against 46.36 for the understanding-only Qwen-VL baseline, and the text mean also rises. Compared with discrete-code and latent-flow generation objectives, perceptual representation prediction yields stronger and more consistent transfer to understanding. Linear probes and visual-evidence interventions further reveal richer object and spatial structure and stronger use of image-specific information. These results suggest that generation can benefit understanding when it directly supervises the perceptual representations that understanding consumes.",
+    "keywords": [
+      "Unified Multimodal Models",
+      "JEPA",
+      "LLM Pretraining"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=d5sYlJxHoh"
+  },
+  {
+    "title": "W-JEPA: Wavelet Joint-Embedding Predictive Architecture for Wearable Activity Recognition",
+    "abstract": "A major challenge in wearable device activity recognition is the heterogeneity across datasets in sensor placement, channel count, sampling rate and subjects. Moreover, the motion patterns that distinguish activities often appear as subtle, scale-specific variations within otherwise similar waveforms. As a result, raw signals are often ambiguous, and models trained on them tend to rely on cues specific to a particular sensor setup or participant, which limits both cross-dataset transfer and generalization to unseen participants. Addressing this requires representations that preserve such activity-relevant, scale-specific variation. We introduce W-JEPA, a self-supervised framework that exploits the multiscale structure of inertial motion and leverages a joint-embedding predictive architecture, by organizing windows into a fixed grid of wavelet tokens indexed by scale, sensor axis, and time. These wavelet tokens help expose activity-specific detail within broadly similar raw signals, and serve as the units of masked latent prediction. W-JEPA predicts masked token representations supplied by an exponential-moving-average (EMA) target encoder. Because recovering a masked token requires relating motion at one scale and axis to motion at other scales and axes, the model learns the cross-scale, cross-axis structure of human movement. Across six wearable activity benchmarks, W-JEPA outperforms state-of-the-art methods under random-window splits and remains the strongest when subjects are held out, improving average macro-F1 by 8.7 percentage points over the strongest published baseline. These results indicate that physically grounded multiscale tokenization, combined together with latent predictive learning, provides a promising foundation for transferable representations of heterogeneous wearable inertial data.",
+    "keywords": [
+      "Human activity recognition (HAR)",
+      "Self-supervised learning",
+      "Wearable sensing",
+      "Wavelets",
+      "Joint-embedding predictive architecture (JEPA)",
+      "Time-series"
+    ],
+    "pdf_url": "https://openreview.net/pdf?id=Z4AEwtKhHZ"
+  }
+]

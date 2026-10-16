@@ -1,0 +1,23 @@
+{
+  "created_at_utc": "2026-10-13T22:49:16.856462+00:00",
+  "source_kind": "indexed_search",
+  "input_file": null,
+  "venue": "ICLR.cc/2027/Conference",
+  "records_examined": 115,
+  "world_model_matches": 115,
+  "hierarchy_matches": 115,
+  "hierarchy_output": "/usr/local/data2/vchida/iclr2027/hierarchy-wm.json",
+  "selection_rule": "world-model terminology AND hierarchy-related terminology",
+  "hierarchy_selection": "Broad metadata keyword screening; not main-paper review",
+  "search_terms": [
+    "hierarchy",
+    "hierarchical",
+    "multiscale",
+    "multi-scale",
+    "subgoal",
+    "subgoals",
+    "nested",
+    "pyramid",
+    "matryoshka"
+  ]
+}

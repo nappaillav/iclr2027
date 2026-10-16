@@ -1,0 +1,9 @@
+{
+  "created_at_utc": "2026-10-13T22:02:44.862216+00:00",
+  "source_file": "wm_papers_checkpoint.json",
+  "source_records": 1473,
+  "combined_matches": 112,
+  "combined_search_complete": false,
+  "source_checkpoint_complete": false,
+  "selection_rule": "world-model terminology AND hierarchy-related terminology in metadata"
+}
